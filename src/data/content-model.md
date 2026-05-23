@@ -13,7 +13,7 @@
 
 | Source | 용도 | 공개 반영 방식 |
 | --- | --- | --- |
-| Notion archive export | 경력, 프로젝트, 기술 스택, 글 링크 | 이력서 전체가 아니라 러프한 career 흐름만 sanitize 후 `careerTimeline`, `careerCaseStudies`, `writing`으로 분리 |
+| Notion archive export | 경력, 프로젝트, 기술 스택, 글 링크 | 이력서 전체가 아니라 공개 가능한 career 흐름만 sanitize 후 `careerTimeline`, `careerCaseStudies`, `writing`으로 분리 |
 | GitHub public repository metadata | 최근 active repositories | public/source repo만 `repositories`에 반영 |
 | GitHub README/local docs | repository 설명 보강 | 공개 repo의 README 내용만 요약 |
 | 기존 wireframe/design | 화면 구조 | `Working Notes`, `Active Repositories`, `Career Case Studies`, `Career Context` 섹션으로 매핑 |
@@ -186,10 +186,9 @@ Fail-closed rules:
 | `/` Hero | `publicProfile` |
 | `/` Field Notes | `notes` |
 | `/` About rail | `publicProfile`, `publicProfile.philosophy` |
-| `/` Publish Gate rail | `publishGate` |
 | `/` Active Repositories | `repositories` |
 | `/` Career Case Studies | `careerCaseStudies` |
 | `/notes/`, `/notes/[slug]/` | `notes`, `repositories`, `careerCaseStudies` |
 | `/projects/`, `/projects/[name]/` | `repositories`, `notes` |
-| `/career/` | `careerTimeline`, `careerCaseStudies`, `publishGate` |
+| `/career/` | `careerTimeline`, `careerCaseStudies` |
 | `/archive/` | `writing` optional/backlog |

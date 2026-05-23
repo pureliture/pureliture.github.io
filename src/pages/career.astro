@@ -2,7 +2,7 @@
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { approvedCareerCaseStudies, approvedCareerTimeline, publishGate } from '../lib/content';
+import { approvedCareerCaseStudies, approvedCareerTimeline } from '../lib/content';
 
 const description = 'AI Agent 개발, Application Architecture, Backend 운영으로 이어지는 경력 맥락입니다.';
 ---
@@ -12,17 +12,10 @@ const description = 'AI Agent 개발, Application Architecture, Backend 운영�
   <main>
     <section class="page-hero shell">
       <p class="page-eyebrow">Career Context</p>
-      <h1>Notion 경력서에서 가져온 러프한 Career</h1>
+      <h1>AI Agent 개발로 이어진 경력 흐름</h1>
       <p class="page-lead">
-        이력서 전체가 아니라 회사명, 기간, 역할 흐름만 공개 가능한 수준으로 정리합니다.
-        세부 프로젝트와 proof는 별도 비공개 영역에서 관리합니다.
+        백엔드 개발과 운영, Application Architecture 경험이 현재의 AI Agent 개발로 어떻게 이어졌는지 정리합니다.
       </p>
-      <div class="status-strip">
-        <span>Status</span>
-        <strong>{publishGate.status}</strong>
-        <span>Review</span>
-        <strong>{publishGate.requiredApprovals.length} pending</strong>
-      </div>
     </section>
 
     <section class="wide-section career-band">

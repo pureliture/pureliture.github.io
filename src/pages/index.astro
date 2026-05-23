@@ -11,8 +11,6 @@ import {
   getEvidenceLabels,
   getNotePath,
   getProjectPath,
-  hasPublishBlockers,
-  publishGate,
   publicProfile,
 } from '../lib/content';
 
@@ -93,19 +91,6 @@ const description =
             <span class="pill">LLM 친화 구조</span>
           </div>
         </section>
-
-        <section class="rail-card gate">
-          <h2>Publish Gate</h2>
-          <p>
-            {hasPublishBlockers
-              ? '공개 전 검토가 필요한 항목이 있어 배포 게이트가 닫혀 있습니다.'
-              : '공개 배포 가능한 상태입니다.'}
-          </p>
-          <div class="metric-list">
-            <div class="metric"><span>Status</span><span>{publishGate.status}</span></div>
-            <div class="metric"><span>Review</span><span>{publishGate.requiredApprovals.length} pending</span></div>
-          </div>
-        </section>
       </aside>
     </section>
 
@@ -169,7 +154,7 @@ const description =
       <div class="shell">
         <div class="section-title">
           <h2>Career Snapshot</h2>
-          <span>Notion 경력서에서 가져온 러프한 공개 요약</span>
+          <span>세부 성과보다 역할 흐름 중심</span>
         </div>
         <div class="case-grid">
           {

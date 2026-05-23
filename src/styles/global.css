@@ -657,24 +657,6 @@ h1 {
   background: var(--lime);
 }
 
-.status-strip {
-  display: inline-grid;
-  grid-template-columns: repeat(4, auto);
-  gap: 10px 16px;
-  margin-top: 24px;
-  border: 1px solid var(--rust);
-  border-radius: 999px;
-  background: rgba(255, 246, 230, 0.92);
-  padding: 10px 14px;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 900;
-}
-
-.status-strip span {
-  color: var(--muted);
-}
-
 .footer {
   border-top: 1px solid var(--line);
   padding: 28px 0;
@@ -718,8 +700,4 @@ h1 {
     flex-direction: column;
   }
 
-  .status-strip {
-    grid-template-columns: 1fr 1fr;
-    border-radius: 8px;
-  }
 }
