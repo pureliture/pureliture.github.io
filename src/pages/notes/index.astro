@@ -1,0 +1,42 @@
+---
+import SiteFooter from '../../components/SiteFooter.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { approvedNotes, getEvidenceLabels, getNotePath } from '../../lib/content';
+
+const description = 'AI Agent 개발과 GitHub repository 활동에서 파생된 Field Notes 목록입니다.';
+---
+
+<BaseLayout title="Field Notes | 이상혁의 개발 기록" description={description}>
+  <SiteHeader />
+  <main>
+    <section class="page-hero shell">
+      <p class="page-eyebrow">Field Notes</p>
+      <h1>최근 repository 활동에서 글감으로 이어진 기록</h1>
+      <p class="page-lead">
+        완성된 글보다 먼저, 지금 설계하고 구현하며 남길 만한 문제를 모읍니다.
+      </p>
+    </section>
+
+    <section class="shell page-section">
+      <div class="feed">
+        {
+          approvedNotes.map((note, index) => (
+            <article class="post-card">
+              <span class="post-kind">{String(index + 1).padStart(2, '0')} / {note.kind}</span>
+              <div>
+                <h3><a href={getNotePath(note.slug)}>{note.title}</a></h3>
+                <p>{note.summary}</p>
+                <div class="post-meta">
+                  {note.tags.slice(0, 4).map((tag) => <span>{tag}</span>)}
+                </div>
+                <div class="evidence-line">{getEvidenceLabels(note.linkedEvidence).join(' / ')}</div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import {
+  approvedNotes,
+  approvedCareerCaseStudies,
+  approvedCareerTimeline,
+  approvedRepositories,
+  approvedWriting,
+  getEvidenceLabels,
+  getNotePath,
+  getProjectPath,
+  hasPublishBlockers,
+  publishGate,
+  publicProfile,
+} from '../lib/content';
+
+const description =
+  'AI Agent 개발, Application Architecture, Backend 운영 경험과 GitHub repository 활동을 기록하는 개발 블로그입니다.';
+
+---
+
+<BaseLayout title="이상혁의 개발 기록" description={description}>
+  <SiteHeader />
+
+  <main id="top">
+    <section class="intro">
+      <div class="shell intro-grid">
+        <div>
+          <p class="kicker">AI Agent / Architecture / Operations</p>
+          <h1>{publicProfile.headline}</h1>
+          <p class="lead">{publicProfile.shortBio}</p>
+          <div class="reference-strip" aria-label="참고한 블로그 구조">
+            <span>Notes-first</span>
+            <span>Writing archive</span>
+            <span>Explainer log</span>
+          </div>
+        </div>
+        <aside class="signal-card" aria-label="현재 방향">
+          <div class="signal-grid" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <h2>Current Signal</h2>
+          <p>AI Agent 개발을 중심에 두고, 최근 repository 활동을 글감으로 전환합니다.</p>
+          <ol>
+            <li>workflow와 tool orchestration</li>
+            <li>RAG ingress와 backpressure</li>
+            <li>Markdown 기반 task lifecycle</li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section class="shell main" id="notes">
+      <div>
+        <div class="section-title">
+          <h2>Field Notes</h2>
+          <span>최근 repository 활동에서 파생된 작성 후보</span>
+        </div>
+        <div class="feed">
+          {
+            approvedNotes.map((note, index) => (
+              <article class="post-card">
+                <span class="post-kind">{String(index + 1).padStart(2, '0')} / {note.kind}</span>
+                <div>
+                  <h3>
+                    <a href={getNotePath(note.slug)}>{note.title}</a>
+                  </h3>
+                  <p>{note.summary}</p>
+                  <div class="post-meta">
+                    {note.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}
+                  </div>
+                  <div class="evidence-line">
+                    {getEvidenceLabels(note.linkedEvidence).join(' / ')}
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+      </div>
+
+      <aside class="rail">
+        <section class="rail-card dark">
+          <h2>About</h2>
+          <p>{publicProfile.philosophy[1]} {publicProfile.philosophy[2]}</p>
+          <div class="pills">
+            <span class="pill">설계는 운영까지</span>
+            <span class="pill">LLM 친화 구조</span>
+          </div>
+        </section>
+
+        <section class="rail-card gate">
+          <h2>Publish Gate</h2>
+          <p>
+            {hasPublishBlockers
+              ? '공개 전 검토가 필요한 항목이 있어 배포 게이트가 닫혀 있습니다.'
+              : '공개 배포 가능한 상태입니다.'}
+          </p>
+          <div class="metric-list">
+            <div class="metric"><span>Status</span><span>{publishGate.status}</span></div>
+            <div class="metric"><span>Review</span><span>{publishGate.requiredApprovals.length} pending</span></div>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="wide-section" id="projects">
+      <div class="shell">
+        <div class="section-title">
+          <h2>Active Repositories</h2>
+          <span>GitHub 최신 활동 기반</span>
+        </div>
+        <div class="project-grid">
+          {
+            approvedRepositories.map((repo, index) => (
+              <article class={`project ${index === 0 ? 'featured' : ''}`}>
+                <div>
+                  <span class="post-kind">{repo.language}</span>
+                  <h3><a href={getProjectPath(repo.name)}>{repo.name}</a></h3>
+                  <p>{repo.summary}</p>
+                </div>
+                <div class="pills">
+                  {repo.tags.slice(0, 3).map((tag) => <span class="pill">{tag}</span>)}
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="wide-section career-band" id="career">
+      <div class="shell career-layout">
+        <section class="career-intro">
+          <h2>Career Context</h2>
+          <p>
+            AI Agent 개발, Application Architecture, 백엔드 운영 경험이 어떻게 이어졌는지 간단히 정리합니다.
+            상세 기록은 공개 가능한 정보만 남겨 별도 페이지로 확장합니다.
+          </p>
+          <div class="pills">
+            <span class="pill">AI Agent 개발</span>
+            <span class="pill">Application Architecture</span>
+            <span class="pill">Backend Operations</span>
+          </div>
+        </section>
+        <section class="timeline">
+          {
+            approvedCareerTimeline.map((item) => (
+              <article class="timeline-row">
+                <span class="time">{item.period}</span>
+                <div>
+                  <h3>{item.role}</h3>
+                  <span class="org-line">{item.organization}</span>
+                  <p>{item.summary}</p>
+                </div>
+              </article>
+            ))
+          }
+        </section>
+      </div>
+    </section>
+
+    <section class="wide-section" id="case-studies">
+      <div class="shell">
+        <div class="section-title">
+          <h2>Career Snapshot</h2>
+          <span>Notion 경력서에서 가져온 러프한 공개 요약</span>
+        </div>
+        <div class="case-grid">
+          {
+            approvedCareerCaseStudies.map((study) => (
+              <article class="case-card">
+                <span class="post-kind">{study.organization} / {study.period}</span>
+                <h3>{study.title}</h3>
+                <p>{study.summary}</p>
+                <div class="post-meta">
+                  {study.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="wide-section writing-band" id="writing">
+      <div class="shell writing-list">
+        <div class="section-title">
+          <h2>Writing Archive</h2>
+          <span>외부 발행 글과 옮겨올 주제</span>
+        </div>
+        {
+          approvedWriting.map((item) => (
+            <article class="writing-row">
+              {item.url ? <a href={item.url}>{item.title}</a> : <span class="writing-title">{item.title}</span>}
+              <span>{item.tags.join(' · ')}</span>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

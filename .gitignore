@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.screenshots/
+.routine-harness/
+private/
+career-private/
+.env
+.env.*
+!.env.example
+.DS_Store

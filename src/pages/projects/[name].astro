@@ -1,0 +1,60 @@
+---
+import SiteFooter from '../../components/SiteFooter.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { approvedNotes, approvedRepositories, getNotePath } from '../../lib/content';
+
+export function getStaticPaths() {
+  return approvedRepositories.map((repo) => ({
+    params: { name: repo.name },
+    props: { repo }
+  }));
+}
+
+const { repo } = Astro.props;
+const relatedNotes = approvedNotes.filter((note) => note.linkedEvidence.includes(repo.name));
+const description = repo.summary;
+---
+
+<BaseLayout title={`${repo.name} | 이상혁의 개발 기록`} description={description}>
+  <SiteHeader />
+  <main>
+    <article class="shell article-page">
+      <header class="article-head">
+        <p class="page-eyebrow">{repo.language} / {repo.role}</p>
+        <h1>{repo.name}</h1>
+        <p class="page-lead">{repo.summary}</p>
+        <div class="post-meta">
+          {repo.tags.map((tag) => <span>{tag}</span>)}
+        </div>
+        <div class="action-row">
+          <a class="button-link" href={repo.url}>GitHub repository</a>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <section class="article-section">
+          <h2>프로젝트 관점</h2>
+          <p>
+            이 프로젝트는 최근 GitHub 활동을 블로그 글감으로 전환하기 위한 공개 가능한 근거입니다.
+            README와 commit 흐름을 기준으로 설계 의도, 검증 방식, 운영 가능성을 계속 보강합니다.
+          </p>
+        </section>
+
+        <section class="article-section">
+          <h2>연결된 글</h2>
+          {
+            relatedNotes.length > 0 ? (
+              <div class="link-list">
+                {relatedNotes.map((note) => <a class="button-link" href={getNotePath(note.slug)}>{note.title}</a>)}
+              </div>
+            ) : (
+              <p>아직 연결된 Field Note가 없습니다.</p>
+            )
+          }
+        </section>
+      </div>
+    </article>
+  </main>
+  <SiteFooter />
+</BaseLayout>

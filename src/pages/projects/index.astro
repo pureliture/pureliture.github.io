@@ -1,0 +1,41 @@
+---
+import SiteFooter from '../../components/SiteFooter.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { approvedRepositories, getProjectPath } from '../../lib/content';
+
+const description = '최근 활발히 개발 중인 public GitHub repository 기반 프로젝트 목록입니다.';
+---
+
+<BaseLayout title="Projects | 이상혁의 개발 기록" description={description}>
+  <SiteHeader />
+  <main>
+    <section class="page-hero shell">
+      <p class="page-eyebrow">Projects</p>
+      <h1>최근 개발 중인 public repository</h1>
+      <p class="page-lead">
+        사이드프로젝트와 학습 실험을 단순 링크가 아니라 설계 의도와 운영 관점이 보이는 기록으로 정리합니다.
+      </p>
+    </section>
+
+    <section class="shell page-section">
+      <div class="project-grid">
+        {
+          approvedRepositories.map((repo, index) => (
+            <article class={`project ${index === 0 ? 'featured' : ''}`}>
+              <div>
+                <span class="post-kind">{repo.language}</span>
+                <h3><a href={getProjectPath(repo.name)}>{repo.name}</a></h3>
+                <p>{repo.summary}</p>
+              </div>
+              <div class="pills">
+                {repo.tags.slice(0, 4).map((tag) => <span class="pill">{tag}</span>)}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

@@ -1,0 +1,22 @@
+{
+  "name": "pureliture.github.io",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "start": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "validate": "node scripts/validate-content.mjs",
+    "validate:publish": "node scripts/validate-content.mjs --publish",
+    "build": "npm run validate:publish && ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "build:local": "npm run validate && ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "build:publish": "npm run build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
+  },
+  "dependencies": {
+    "astro": "^6.3.6"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

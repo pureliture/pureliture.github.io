@@ -1,0 +1,253 @@
+{
+  "generatedFor": "github-blog-design-v2",
+  "sourceSnapshotDate": "2026-05-20",
+  "publicProfile": {
+    "name": "이상혁",
+    "headline": "설계와 운영, 그리고 AI Agent 개발에 대한 기록",
+    "shortBio": "AI Agent 개발, Application Architecture, 백엔드 운영에서 배운 것을 글과 프로젝트로 축적한 기록.",
+    "philosophy": [
+      "설계는 운영까지 이어져야 한다.",
+      "기능 구현 자체보다 문제의 맥락과 경계를 명확히 한다.",
+      "장애 상황에서도 유지보수와 확장이 가능한 지속 가능한 구조를 지향한다.",
+      "비즈니스 플로우와 클래스 구조를 이해하기 쉬운 형태로 맞추고, 복잡한 로직을 Componentization, Facade, Orchestration으로 다룬다.",
+      "LLM 기반 개발 생산성에 유리한 구조를 탐구한다."
+    ],
+    "focus": [
+      "AI Agent 개발",
+      "Application Architecture",
+      "Backend operations",
+      "Java/Spring/Kafka",
+      "LLM-friendly architecture"
+    ],
+    "publicLinks": {
+      "github": "https://github.com/pureliture",
+      "linkedin": "https://www.linkedin.com/in/lsh1756",
+      "email": null
+    },
+    "sensitiveOmissions": [
+      "phone",
+      "certificateIds",
+      "rawMemory",
+      "applicationStatus",
+      "privateRepositoryDetails",
+      "notionSignedAssets"
+    ],
+    "publicReviewStatus": "approved"
+  },
+  "notes": [
+    {
+      "slug": "agent-workflow-operational-shape",
+      "title": "AI Agent 기능을 운영 가능한 workflow로 만드는 과정",
+      "kind": "Agent Log",
+      "status": "planned",
+      "summary": "Agent가 맡을 범위, tool 연동, human-in-the-loop, 실패 복구를 어떻게 설계하는지 기록하는 글 묶음.",
+      "tags": ["AI Agent", "tool orchestration", "workflow", "verification"],
+      "linkedEvidence": ["ai-cli-orch-wrapper", "routine-harness"],
+      "publicReviewStatus": "approved"
+    },
+    {
+      "slug": "business-flow-class-structure",
+      "title": "비즈니스 플로우와 클래스 구조를 1:1로 맞추려 했던 이유",
+      "kind": "Architecture",
+      "status": "planned",
+      "summary": "Componentization, Facade, Orchestration으로 복잡한 로직을 다루며 얻은 설계 철학 정리.",
+      "tags": ["Application Architecture", "design principle", "componentization"],
+      "linkedEvidence": ["lg-uplus-backend-architecture"],
+      "publicReviewStatus": "needs-review"
+    },
+    {
+      "slug": "rag-ingress-backpressure-notes",
+      "title": "RAG ingress queue를 backpressure 구조로 다루는 이유",
+      "kind": "Project Log",
+      "status": "planned",
+      "summary": "RAG target 앞단에서 redacted document를 안정적으로 전달하기 위한 queue, retry, backpressure 설계 노트.",
+      "tags": ["RAG", "queue", "backpressure", "Java"],
+      "linkedEvidence": ["rag-ingress-queue"],
+      "publicReviewStatus": "approved"
+    },
+    {
+      "slug": "markdown-task-engine-source-of-truth",
+      "title": "Markdown을 task lifecycle의 source of truth로 쓰는 실험",
+      "kind": "Project Log",
+      "status": "planned",
+      "summary": "schema, policy, adapter contract를 Markdown 기반 작업 흐름으로 관리하며 얻은 설계 판단을 정리할 글.",
+      "tags": ["task engine", "Markdown", "schema", "TypeScript"],
+      "linkedEvidence": ["kanban-task-engine"],
+      "publicReviewStatus": "approved"
+    }
+  ],
+  "repositories": [
+    {
+      "name": "ai-cli-orch-wrapper",
+      "url": "https://github.com/pureliture/ai-cli-orch-wrapper",
+      "visibility": "public",
+      "language": "TypeScript",
+      "updatedAt": "2026-05-20T13:13:47Z",
+      "role": "owner",
+      "summary": "Claude, Codex, Gemini를 repo-local AI workflow로 묶는 consent-gated delegation wrapper.",
+      "tags": ["AI CLI", "workflow harness", "TypeScript", "Codex", "Claude", "Gemini"],
+      "displayPriority": 1,
+      "publicReviewStatus": "approved"
+    },
+    {
+      "name": "routine-harness",
+      "url": "https://github.com/pureliture/routine-harness",
+      "visibility": "public",
+      "language": "Python",
+      "updatedAt": "2026-05-19T22:26:30Z",
+      "role": "owner",
+      "summary": "Codex CLI, Claude Code, Gemini CLI를 위한 self-contained harness engineering toolkit.",
+      "tags": ["harness", "adapters", "install plans", "Python", "CLI"],
+      "displayPriority": 2,
+      "publicReviewStatus": "approved"
+    },
+    {
+      "name": "rag-ingress-queue",
+      "url": "https://github.com/pureliture/rag-ingress-queue",
+      "visibility": "public",
+      "language": "Java",
+      "updatedAt": "2026-05-18T11:26:38Z",
+      "role": "owner",
+      "summary": "RAG target 앞단에서 redacted RAG-ready document를 backpressure 기반으로 전달하는 ingress queue 서버.",
+      "tags": ["Java", "Spring Boot", "RAGFlow", "backpressure", "queue"],
+      "displayPriority": 3,
+      "publicReviewStatus": "approved"
+    },
+    {
+      "name": "kanban-task-engine",
+      "url": "https://github.com/pureliture/kanban-task-engine",
+      "visibility": "public",
+      "language": "TypeScript",
+      "updatedAt": "2026-05-14T14:10:26Z",
+      "role": "owner",
+      "summary": "Markdown을 source of truth로 두고 task lifecycle, schema, policy, adapter contract를 다루는 TypeScript workspace.",
+      "tags": ["TypeScript", "task engine", "schema", "adapter contract"],
+      "displayPriority": 4,
+      "publicReviewStatus": "approved"
+    },
+    {
+      "name": "engineering-review-assistant",
+      "url": "https://github.com/pureliture/engineering-review-assistant",
+      "visibility": "public",
+      "language": "TypeScript",
+      "updatedAt": "2026-04-26T14:13:22Z",
+      "role": "owner",
+      "summary": "allowlisted repository change를 read-only로 검토하고 React dashboard로 보여주는 MCP app.",
+      "tags": ["TypeScript", "MCP", "ChatGPT App", "code review"],
+      "displayPriority": 5,
+      "publicReviewStatus": "approved"
+    },
+    {
+      "name": "cca-f-study-agent",
+      "url": "https://github.com/pureliture/cca-f-study-agent",
+      "visibility": "public",
+      "language": "Python",
+      "updatedAt": "2026-05-13T00:56:13Z",
+      "role": "owner",
+      "summary": "학습/agent 실험 계열 public repository. 상세 소개는 README 확인 후 보강 필요.",
+      "tags": ["Python", "agent", "study"],
+      "displayPriority": 6,
+      "publicReviewStatus": "needs-review"
+    }
+  ],
+  "careerCaseStudies": [
+    {
+      "slug": "lg-uplus-backend-architecture",
+      "title": "백엔드 개발과 Application Architecture 경험",
+      "organization": "LG유플러스",
+      "period": "2022.01 ~ 현재",
+      "summary": "통신 도메인에서 백엔드 서비스 개발, 운영, 구조 개선, 표준화 관점의 Application Architecture 경험을 쌓았다.",
+      "proof": [],
+      "tags": ["backend", "architecture", "operations", "Java/Spring"],
+      "source": "notion-export",
+      "publicReviewStatus": "approved"
+    },
+    {
+      "slug": "lg-uplus-ai-agent-transition",
+      "title": "AI Agent 개발로의 전환",
+      "organization": "LG유플러스",
+      "period": "현재",
+      "summary": "AI Agent 기능을 workflow와 tool 연동을 통해 실사용 가능한 형태로 구현하는 방향으로 역할을 확장하고 있다.",
+      "proof": [],
+      "tags": ["AI Agent", "workflow", "tool integration"],
+      "source": "notion-export",
+      "publicReviewStatus": "approved"
+    },
+    {
+      "slug": "legacy-insurance-system",
+      "title": "레거시 시스템 운영 경험",
+      "organization": "IBK연금보험",
+      "period": "2020.10 ~ 2021.11",
+      "summary": "Java/EJB 기반 레거시 시스템을 운영하며 유지보수 가능한 구조와 반복 작업 제거의 필요성을 경험했다.",
+      "proof": [],
+      "tags": ["legacy", "EJB", "operations"],
+      "source": "notion-export",
+      "publicReviewStatus": "approved"
+    }
+  ],
+  "careerTimeline": [
+    {
+      "period": "현재",
+      "organization": "Current Focus",
+      "role": "AI Agent 개발",
+      "summary": "AI Agent 기능을 개발하고 workflow와 tool 연동을 통해 실사용 가능한 형태로 구현한다.",
+      "tags": ["AI Agent", "workflow", "tool integration"],
+      "publicReviewStatus": "approved"
+    },
+    {
+      "period": "2022.01 ~ 현재",
+      "organization": "LG유플러스",
+      "role": "Backend Developer / Application Architecture",
+      "summary": "백엔드 서비스 개발과 운영, 구조 개선, 표준화 관점의 Application Architecture 경험을 이어왔다.",
+      "tags": ["backend", "architecture", "Java/Spring"],
+      "publicReviewStatus": "approved"
+    },
+    {
+      "period": "2020.10 ~ 2021.11",
+      "organization": "IBK연금보험",
+      "role": "Legacy System Operation",
+      "summary": "레거시 시스템 운영을 통해 유지보수 가능한 구조와 반복 작업 제거의 중요성을 경험했다.",
+      "tags": ["legacy", "EJB", "operations"],
+      "publicReviewStatus": "approved"
+    }
+  ],
+  "writing": [
+    {
+      "title": "주니어 개발자의 백엔드 아키텍처 개선 도전기",
+      "url": "https://techblog.uplus.co.kr/%EC%A3%BC%EB%8B%88%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EB%B0%B1%EC%97%94%EB%93%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B0%9C%EC%84%A0-%EB%8F%84%EC%A0%84%EA%B8%B0-9fb19982db9c",
+      "kind": "external",
+      "summary": "백엔드 아키텍처 개선 경험을 정리한 외부 발행 글.",
+      "tags": ["architecture", "backend"],
+      "linkedCaseStudy": "lg-uplus-backend-architecture",
+      "publicReviewStatus": "approved"
+    },
+    {
+      "title": "MSA 환경 데이터 일관성 보장 배치 개발기",
+      "url": "https://techblog.uplus.co.kr/msa-%ED%99%98%EA%B2%BD-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9D%BC%EA%B4%80%EC%84%B1-%EB%B3%B4%EC%9E%A5-%EB%B0%B0%EC%B9%98-%EA%B0%9C%EB%B0%9C%EA%B8%B0-1aadc0a6a80a",
+      "kind": "external",
+      "summary": "MSA 데이터 일관성 보장 배치 개발 경험을 정리한 외부 발행 글.",
+      "tags": ["MSA", "data quality", "batch"],
+      "linkedCaseStudy": "lg-uplus-backend-architecture",
+      "publicReviewStatus": "approved"
+    }
+  ],
+  "publishGate": {
+    "status": "approved",
+    "needsHumanReview": false,
+    "blockingReasons": [],
+    "excluded": [
+      "phone number",
+      "certificate identifiers",
+      "non-public repository details",
+      "raw Notion signed image URLs",
+      "raw memory",
+      "application tracking data"
+    ],
+    "requiredApprovals": [],
+    "denyPatternCategories": [
+      "unsafe role-comparison wording",
+      "unapproved workplace-scope wording",
+      "unapproved current-role title wording"
+    ]
+  }
+}
